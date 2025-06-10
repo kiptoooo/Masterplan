@@ -15,6 +15,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 # 4. Set working directory
 WORKDIR /var/www/html
 
+# 4.1 Copy example env & generate a key so APP_KEY is never blank
+COPY .env.example .env
+RUN php artisan key:generate --force
+
 # 5. Copy source in and install PHP deps
 COPY . /var/www/html
 RUN composer install --no-dev --optimize-autoloader
