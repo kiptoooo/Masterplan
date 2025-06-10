@@ -1,5 +1,5 @@
 # 1. Base image with PHP & Composer
-FROM php:8.1-cli
+FROM php:8.2-cli
 
 # 2. Install system deps for Laravel + SQLite
 RUN apt-get update \
@@ -23,7 +23,7 @@ RUN composer install --no-dev --optimize-autoloader
 RUN touch database/database.sqlite \
  && php artisan migrate --force
 
-# 7. Expose the port Render provides
+# 7. Expose the Render port
 EXPOSE 8000
 
 # 8. Start the Laravel dev server
