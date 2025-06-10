@@ -10,9 +10,6 @@ class TrustProxies extends Middleware
     /**
      * The trusted proxies for this application.
      *
-     * You can set this to '*' to trust all proxies (Render will set
-     * X-Forwarded-Proto correctly).
-     *
      * @var array|string|null
      */
     protected $proxies = '*';
