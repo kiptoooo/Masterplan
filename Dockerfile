@@ -2,9 +2,11 @@
 FROM php:8.1-cli
 
 # 2. Install system deps for Laravel + SQLite
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+ && apt-get install -y \
     libzip-dev zip unzip sqlite3 \
-  && docker-php-ext-install pdo_sqlite zip
+    libsqlite3-dev pkg-config \
+ && docker-php-ext-install pdo_sqlite zip
 
 # 3. Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- \
